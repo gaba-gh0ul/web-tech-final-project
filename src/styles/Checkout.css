@@ -1,0 +1,27 @@
+.checkout-container {
+  padding: 2rem;
+  text-align: center;
+}
+
+.checkout-item {
+  margin-bottom: 1rem;
+}
+
+.checkout-item button {
+  margin-top: 0.5rem;
+  padding: 0.4rem 1rem;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.checkout-button {
+  margin-top: 1rem;
+  padding: 0.8rem 1.2rem;
+  background-color: #22c55e;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}

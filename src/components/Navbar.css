@@ -1,0 +1,29 @@
+.navbar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: #ffcc00;
+  height: 100vh;
+  width: 150px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.nav-button {
+  display: block;
+  margin: 10px 0;
+  background-color: white;
+  color: black;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+}
+
+.nav-button:hover {
+  background-color: #f0f0f0;
+}
