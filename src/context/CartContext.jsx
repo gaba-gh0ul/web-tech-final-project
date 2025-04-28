@@ -1,5 +1,5 @@
 // src/context/CartContext.js
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from 'react';
 
 const CartContext = createContext();
 
@@ -11,7 +11,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const removeFromCart = (id) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
+    setCartItems((prev) => prev.filter(item => item.id !== id));
   };
 
   return (
