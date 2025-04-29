@@ -8,3 +8,4 @@ Getting NODE.JS to run
 * Start the apache and MYSQL server
 * Start the server with it's own `npm run dev`
 * Start client side with `npm run dev`
+cle

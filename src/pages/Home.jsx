@@ -23,7 +23,7 @@ const Home = () => {
       <p><strong>Address:</strong> 6177 Epps Mill Rd C, Christiana, TN 37037</p>
       <p><strong>Phone:</strong> (615) 962-8818</p>
       <p><strong>Hours:</strong></p>
-      <p>Monday–Sunday: 10 AM–9 PM</p>
+      <p>Monday–Sunday: 10 AM-9 PM</p>
 
       <div style={{ marginTop: '30px' }}>
         <Link to="/login">
