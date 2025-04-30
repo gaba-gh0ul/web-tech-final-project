@@ -1,34 +1,77 @@
-// RegisterPage.jsx
 import React, { useState } from 'react';
-import '../styles/Auth.css';
+import { Link } from 'react-router-dom';
+import '../styles/RegisterPage.css'; // <- Make sure this matches the filename
 
-const Register = () => {
-  const [formData, setFormData] = useState({
+const RegisterPage = () => {
+  const [form, setForm] = useState({
     name: '',
     email: '',
     phone: '',
-    password: ''
+    password: '',
+    confirmPassword: '',
   });
 
   const handleChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value });
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Registering user:', formData); // Replace with API call
+    alert(`Registering user: ${form.name}`);
+    // Add form validation and registration logic here
   };
 
   return (
-    <form className="register-form" onSubmit={handleSubmit}>
-      <h2>Register</h2>
-      <input type="text" name="name" placeholder="Name" required onChange={handleChange} />
-      <input type="email" name="email" placeholder="Email" required onChange={handleChange} />
-      <input type="tel" name="phone" placeholder="Phone Number" required onChange={handleChange} />
-      <input type="password" name="password" placeholder="Password" required onChange={handleChange} />
-      <button type="submit">Register</button>
-    </form>
+    <div className="register-container">
+      <h2>Create an Account</h2>
+      <form onSubmit={handleSubmit} className="register-form">
+        <input
+          type="text"
+          name="name"
+          placeholder="Full Name"
+          value={form.name}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email Address"
+          value={form.email}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="tel"
+          name="phone"
+          placeholder="Phone Number"
+          value={form.phone}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={form.password}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="confirmPassword"
+          placeholder="Confirm Password"
+          value={form.confirmPassword}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit" className="register-button">Register</button>
+      </form>
+      <div className="login-redirect">
+        Already have an account? <Link to="/login">Login</Link>
+      </div>
+    </div>
   );
 };
 
-export default Register;
+export default RegisterPage;
