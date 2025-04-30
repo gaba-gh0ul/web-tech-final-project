@@ -1,34 +1,34 @@
+// RegisterPage.jsx
 import React, { useState } from 'react';
-//import '../styles/Auth.css'; 
+import '../styles/Auth.css';
 
-const RegisterPage = () => {
-  const [form, setForm] = useState({
+const Register = () => {
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
-    password: '',
+    phone: '',
+    password: ''
   });
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setFormData({...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Registered successfully! (just a demo)');
-    // In real app: send data to backend
+    console.log('Registering user:', formData); // Replace with API call
   };
 
   return (
-    <div className="auth-container">
+    <form className="register-form" onSubmit={handleSubmit}>
       <h2>Register</h2>
-      <form onSubmit={handleSubmit} className="auth-form">
-        <input type="text" name="name" placeholder="Name" value={form.name} onChange={handleChange} required />
-        <input type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} required />
-        <input type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange} required />
-        <button type="submit">Register</button>
-      </form>
-    </div>
+      <input type="text" name="name" placeholder="Name" required onChange={handleChange} />
+      <input type="email" name="email" placeholder="Email" required onChange={handleChange} />
+      <input type="tel" name="phone" placeholder="Phone Number" required onChange={handleChange} />
+      <input type="password" name="password" placeholder="Password" required onChange={handleChange} />
+      <button type="submit">Register</button>
+    </form>
   );
 };
 
-export default RegisterPage;
+export default Register;
