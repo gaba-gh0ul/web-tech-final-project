@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/RegisterPage.css'; // <- Make sure this matches the filename
+import '../styles/RegisterPage.css'; // 
 
 const RegisterPage = () => {
   const [form, setForm] = useState({
