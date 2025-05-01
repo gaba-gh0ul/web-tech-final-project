@@ -15,31 +15,35 @@ import AdminDashboard from './pages/AdminDashboard';
 import { CartProvider } from './context/CartContext';
 import './App.css';
 
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const toggleDarkMode = () => setDarkMode(!darkMode);
 
   return (
-    <CartProvider>
-      <div className={darkMode ? 'app dark-mode' : 'app'}>
-        <Router>
-          <Navbar toggleDarkMode={toggleDarkMode} />
-          <div style={{ marginLeft: "220px", padding: "20px" }}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/menu" element={<Menu />} />
-              <Route path="/order" element={<Order />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/checkout" element={<Checkout />} />
-              <Route path="/trackorder" element={<TrackOrder />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-              <Route path="/admindashboard" element={<AdminDashboard />} />
-            </Routes>
-          </div>
-        </Router>
-      </div>
-    </CartProvider>
+    <GoogleOAuthProvider clientId='334729623929-jr5gfge4rd0gpf3k5a4ekcd8g4mdn1jn.apps.googleusercontent.com'>
+      <CartProvider>
+        <div className={darkMode ? 'app dark-mode' : 'app'}>
+          <Router>
+            <Navbar toggleDarkMode={toggleDarkMode} />
+            <div style={{ marginLeft: "220px", padding: "20px" }}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/menu" element={<Menu />} />
+                <Route path="/order" element={<Order />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/trackorder" element={<TrackOrder />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/admindashboard" element={<AdminDashboard />} />
+              </Routes>
+            </div>
+          </Router>
+        </div>
+      </CartProvider>
+    </GoogleOAuthProvider>
   );
 }
 

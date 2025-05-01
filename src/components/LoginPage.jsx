@@ -1,5 +1,6 @@
 // src/components/LoginPage.jsx
 import React, { useState } from 'react';
+import { GoogleLogin } from '@react-oauth/google';
 //import '../styles/LoginPage.css'; // optional: create this for styling
 
 const LoginPage = () => {
@@ -12,7 +13,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="login-container">
+    /*<div className="login-container">
       <h2>Login</h2>
       <form onSubmit={handleLogin} className="login-form">
         <input
@@ -34,7 +35,15 @@ const LoginPage = () => {
         <button type="submit">Login</button>
       </form>
       <p>Don't have an account? <a href="#">Register</a></p>
-    </div>
+    </div>*/
+    <GoogleLogin
+      onSuccess={credentialResponse => {
+        console.log(credentialResponse);
+      }}
+      onError={() => {
+        console.log('Login Failed');
+      }}
+    />
   );
 };
 
