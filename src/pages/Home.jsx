@@ -1,37 +1,33 @@
+// src/pages/Home.jsx
+
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/Home.css';  // We'll create nice styles here too
 import logo from '../assets/logo.jpg'; 
+
 const Home = () => {
   return (
-    <div style={{
-      marginLeft: '160px',
-      padding: '20px',
-      textAlign: 'center'
-    }}>
-      {/* Logo at top center */}
-      <img 
-        src={logo} 
-        alt="Greko Taco Logo" 
-        style={{
-          width: '100px',
-          height: 'auto',
-          marginBottom: '20px'
-        }} 
-      />
+    <div className="home-container">
+      {/* Logo */}
+      <img src={logo} alt="Greko Taco Logo" className="home-logo" />
 
-      <h1>Welcome to Greko Taco</h1>
-      <p><strong>Address:</strong> 6177 Epps Mill Rd C, Christiana, TN 37037</p>
-      <p><strong>Phone:</strong> (615) 962-8818</p>
-      <p><strong>Hours:</strong></p>
-      <p>Monday–Sunday: 10 AM-9 PM</p>
+      {/* Welcome Text */}
+      <h1 className="home-title">Welcome to Greko Taco</h1>
+      <p className="home-subtitle">Delicious Greek and Mexican Grill Fusion</p>
 
-      <div style={{ marginTop: '30px' }}>
-        <Link to="/login">
-          <button style={{ marginRight: '15px' }}>Login</button>
-        </Link>
-        <Link to="/register">
-          <button>Register</button>
-        </Link>
+      {/* Address and Contact */}
+      <div className="home-contact">
+        <p><strong>Address:</strong> 6177 Epps Mill Rd C, Christiana, TN 37037</p>
+        <p><strong>Phone:</strong> (615) 962-8818</p>
+        <p><strong>Hours:</strong> Monday–Sunday: 10AM–9PM</p>
+      </div>
+
+      {/* Action Buttons */}
+      <div className="home-buttons">
+        <Link to="/menu" className="home-button">View Menu</Link>
+        <Link to="/order" className="home-button">Order Now</Link>
+        <Link to="/login" className="home-button">Login</Link>
+        <Link to="/register" className="home-button">Register</Link>
       </div>
     </div>
   );
