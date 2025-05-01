@@ -1,0 +1,15 @@
+.track-order-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.track-order-container input {
+  padding: 10px;
+  margin: 10px;
+  width: 300px;
+}
+
+.track-order-container button {
+  padding: 10px 20px;
+  cursor: pointer;
+}
