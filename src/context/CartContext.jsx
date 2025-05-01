@@ -12,13 +12,17 @@ export const CartProvider = ({ children }) => {
 
   const removeFromCart = (indexToRemove) => {
     setCartItems((prevItems) =>
-    prevItems.filter((_, index) => index !== indexToRemove)
-  );
-};
+      prevItems.filter((_, index) => index !== indexToRemove)
+    );
+  };
 
+  // ✅ Clear the entire cart
+  const clearCart = () => {
+    setCartItems([]);
+  };
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
+    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart }}>
       {children}
     </CartContext.Provider>
   );
