@@ -19,18 +19,16 @@ const Users = () => {
       });
   };
 
-
-
   return (
     <div className="order_container">
     {orders.map((order,i) => (
       <>
         <div key = {i} className='order_div'>
-          <p>ORDER NUMBER:{order.ID}</p>
-          <p>NAME:{order.Name}</p>
-          <p>EMAIL:{order.Email}</p>
-          <p>PHONE NUMBER:{order.Phone}</p>      
-          <p>ORDER:</p>
+          <p>ORDER NUMBER:{order.id}</p>
+          <p>NAME:{order.name}</p>
+          <p>EMAIL:{order.email}</p>
+          <p>PHONE NUMBER:{order.phone}</p>      
+          <p>ORDER:{order.menu}</p>
         </div>
       </>
       ))}

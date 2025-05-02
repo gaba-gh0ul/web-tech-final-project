@@ -10,6 +10,7 @@ const Checkout = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [number, setNumber] = useState('');
+  const [orders, setOrders] = useState ('') ; 
 
   const handleAddUser = () => {
     axios.post('http://localhost:5170/api', { name, email, number, cartItems })
@@ -44,6 +45,7 @@ const Checkout = () => {
         <>
           <h3>Total: ${total.toFixed(2)}</h3>
       <h2>Add New User</h2>
+      <div className="Orderer_info">
       <input
         type="text"
         placeholder="Name"
@@ -62,8 +64,9 @@ const Checkout = () => {
         value={number}
         onChange={e => setNumber(e.target.value)}
       />
-      
+      <br/>
       <button onClick={handleAddUser}>Submit Order</button>
+      </div>
         </>
       )}
     </div>

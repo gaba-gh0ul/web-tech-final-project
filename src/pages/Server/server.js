@@ -25,7 +25,7 @@ db.connect((err) => {
 
 // API Endpoint Example: Fetch Users
 app.get('/api', (req, res) => {
-  db.query('SELECT * FROM orders_list', (err, results) => {
+  db.query('SELECT * FROM order_list', (err, results) => {
     if (err) {
       res.status(500).send(err);
     } else {
@@ -37,13 +37,20 @@ app.get('/api', (req, res) => {
 // API Endpoint Example: Add a New User
 app.post('/api', (req, res) => {
   const { name, email, number, cartItems } = req.body;
-  const {catagory, nameofItem, decription, price, custom} = cartItems
-  console.log(nameofItem) ; 
-  db.query('INSERT INTO orders_list (name, email, phone, menu) VALUES (?, ?, ?)', [name, email, number, cartItems], (err, results) => {
+  let allCartItemNames = '' ; 
+
+  cartItems.forEach(item => {
+    allCartItemNames += item.name + ' ' ; 
+  });
+
+  console.log(name, email, number, allCartItemNames);
+
+  db.query('INSERT INTO order_list (name, email, phone, menu) VALUES (?, ?, ?, ?)', 
+    [name, email, number, allCartItemNames], (err, results) => {
     if (err) {
       res.status(500).send(err);
     } else {
-      res.json({ id: results.insertId, name, email, number, cartItems });
+      res.json({ id: results.insertId, name, email, number, allCartItemNames });
     }
   });
 });
