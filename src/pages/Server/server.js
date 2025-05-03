@@ -34,13 +34,23 @@ app.get('/api', (req, res) => {
   });
 });
 
+app.get('/menu', (req, res) => {
+  db.query('SELECT * FROM menu', (err, results) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.json(results);
+    }
+  });
+});
+
 // API Endpoint Example: Add a New User
 app.post('/api', (req, res) => {
   const { name, email, number, cartItems } = req.body;
   let allCartItemNames = '' ; 
-
+  console.log(req.body)  ;
   cartItems.forEach(item => {
-    allCartItemNames += item.name + ' ' ; 
+    allCartItemNames += item.name + '(' + item.custom + ') ' ; 
   });
 
   console.log(name, email, number, allCartItemNames);
