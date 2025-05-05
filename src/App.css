@@ -32,17 +32,8 @@ button:hover {
   background-color: #ff7f00;
 }
 
-
 .app {
-  background-color: #E55600;
+  background-color: #e55600;
   color: #000;
   transition: all 0.3s ease;
 }
-
-.dark-mode {
-  background-color: #121212;
-  color: #f5f5f5;
-}
-
-
-

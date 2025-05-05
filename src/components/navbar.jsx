@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
 
-const Navbar = ({ toggleDarkMode }) => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -44,11 +44,8 @@ const Navbar = ({ toggleDarkMode }) => {
         </Link>
       </div>
 
-      <div className="nav-actions">
-        <button onClick={toggleDarkMode} className="darkmode-toggle">
-          🌙
-        </button>
-      </div>
+      {/* Keeps the nav buttons centered */}
+      <div></div>
     </nav>
   );
 };

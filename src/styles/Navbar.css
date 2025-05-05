@@ -2,7 +2,7 @@
   position: fixed;
   left: 0;
   top: 0;
-  background-color: #D33903;
+  background-color: #d33903;
   height: 100vh;
   width: 150px;
   padding: 20px;
@@ -32,8 +32,7 @@
 }
 
 .login-button,
-.register-button,
-.darkmode-toggle {
+.register-button {
   margin-top: 10px;
   background-color: white;
   color: black;
@@ -43,8 +42,4 @@
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
-}
-
-.darkmode-toggle:hover {
-  background-color: #f1f1f1;
 }
