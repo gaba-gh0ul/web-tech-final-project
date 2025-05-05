@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/LoginPage.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "../styles/LoginPage.css";
 
 const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isResetting, setIsResetting] = useState(false);
-  const [phone, setPhone] = useState('');
-  const [resetCode, setResetCode] = useState('');
-  const [generatedCode, setGeneratedCode] = useState('');
+  const [phone, setPhone] = useState("");
+  const [resetCode, setResetCode] = useState("");
+  const [generatedCode, setGeneratedCode] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -24,10 +24,10 @@ const LoginPage = () => {
 
   const handleVerifyCode = () => {
     if (resetCode === generatedCode) {
-      alert('Code verified! You can now reset your password.');
+      alert("Code verified! You can now reset your password.");
       // Redirect to reset password page or open reset form
     } else {
-      alert('Invalid code. Please try again.');
+      alert("Invalid code. Please try again.");
     }
   };
 
@@ -55,7 +55,7 @@ const LoginPage = () => {
 
           <button type="submit">Login</button>
           <p>
-            Forgot password?{' '}
+            Forgot password?{" "}
             <span className="link-like" onClick={() => setIsResetting(true)}>
               Click here
             </span>

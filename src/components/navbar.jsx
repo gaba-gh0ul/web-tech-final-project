@@ -1,7 +1,7 @@
 // src/components/Navbar.jsx
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Navbar.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "../styles/Navbar.css";
 
 const Navbar = ({ toggleDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,20 +14,40 @@ const Navbar = ({ toggleDarkMode }) => {
         ☰
       </div>
 
-      <div className={`nav-links ${isOpen ? 'open' : ''}`}>
-        <Link to="/" className="nav-button">Home</Link>
-        <Link to="/menu" className="nav-button">Menu</Link>
-        <Link to="/order" className="nav-button">Order</Link>
-        <Link to="/login" className="login-button">Login</Link>
-        <Link to="/register" className="register-button">Register</Link>
-        <Link to="/cart" className="nav-button">Cart</Link>
-        <Link to="/checkout" className="nav-button">Checkout</Link>
-        <Link to="/trackorder" className="nav-button">Track Order</Link>
-        <Link to="/admindashboard" className="nav-button">Admin Dashboard</Link>
+      <div className={`nav-links ${isOpen ? "open" : ""}`}>
+        <Link to="/" className="nav-button">
+          Home
+        </Link>
+        <Link to="/menu" className="nav-button">
+          Menu
+        </Link>
+        <Link to="/order" className="nav-button">
+          Order
+        </Link>
+        <Link to="/login" className="login-button">
+          Login
+        </Link>
+        <Link to="/register" className="register-button">
+          Register
+        </Link>
+        <Link to="/cart" className="nav-button">
+          Cart
+        </Link>
+        <Link to="/checkout" className="nav-button">
+          Checkout
+        </Link>
+        <Link to="/trackorder" className="nav-button">
+          Track Order
+        </Link>
+        <Link to="/admindashboard" className="nav-button">
+          Admin Dashboard
+        </Link>
       </div>
 
       <div className="nav-actions">
-        <button onClick={toggleDarkMode} className="darkmode-toggle">🌙</button>
+        <button onClick={toggleDarkMode} className="darkmode-toggle">
+          🌙
+        </button>
       </div>
     </nav>
   );
