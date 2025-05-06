@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Users = () => {
   const [orders, setOrders] = useState([]);
@@ -24,16 +25,18 @@ const Users = () => {
     {orders.map((order,i) => (
       <>
         <div key = {i} className='order_div'>
-          <p>ORDER NUMBER:{order.id}</p>
-          <p>NAME:{order.name}</p>
-          <p>EMAIL:{order.email}</p>
-          <p>PHONE NUMBER:{order.phone}</p>      
-          <p>ORDER:{order.menu}</p>
+          <p>ORDER NUMBER: {order.id}</p>
+          <p>NAME: {order.name}</p>
+          <p>EMAIL: {order.email}</p>
+          <p>PHONE NUMBER: {order.phone}</p>      
+          <p>ORDER: {order.menu}</p>
+          <p>PRICE: ${order.price}</p>
+
         </div>
       </>
       ))}
 
-
+    <Link to="/register" className="register-button">Add User</Link>
     </div>
   );
 };

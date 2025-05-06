@@ -1,41 +1,49 @@
-// src/components/LoginPage.jsx
-import React, { useState } from 'react';
-//import '../styles/LoginPage.css'; // optional: create this for styling
-
-const LoginPage = () => {
-  const [email, setEmail] = useState('');
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import bcrypt from 'bcryptjs';
+        
+function LoginForm() {
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
-  const handleLogin = (e) => {
+  const navigate = useNavigate();
+        
+  const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Logging in with Email: ${email} and Password: ${password}`);
+
+    const hasedpassword  = bcrypt.hashSync(password, 10) ; 
+    console.log(hasedpassword) ; 
+    axios.post('http://localhost:5170/login',{ username, password })
+      .then(response => {
+        console.log(response.password) ; 
+        navigate('/admindashboard') ; 
+      })
+      .catch(error => {
+        alert('Access Denied');
+      });
   };
-
+        
   return (
-    <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleLogin} className="login-form">
+    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', width: '200px', margin: '50px auto' }}>
         <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-
+        type="text"
+        placeholder="username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        style={{ marginBottom: '10px' }}
+      />
         <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-
-        <button type="submit">Login</button>
+        type="password"
+        placeholder="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        style={{ marginBottom: '10px' }}
+      />
+        <button type="submit">Login </button>
       </form>
-      <p>Don't have an account? <a href="#">Register</a></p>
-    </div>
   );
-};
-
-export default LoginPage;
+}
+        
+export default LoginForm;
+            
+        

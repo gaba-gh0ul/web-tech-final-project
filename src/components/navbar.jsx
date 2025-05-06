@@ -23,14 +23,13 @@ const Navbar = ({ toggleDarkMode }) => {
           <Link to="/cart" className="nav-button">Cart</Link>
           <Link to="/checkout" className="nav-button">Checkout</Link>
           <Link to="/trackorder" className="nav-button">Track Order</Link>
-          <Link to="/admindashboard" className="nav-button">Admin Dashboard</Link>
+          <Link to="/login" className="nav-button">Admin Dashboard</Link>
         </div>
       </div>
 
       {/* Right: Login/Register + Dark Mode */}
       <div className="nav-right">
-        <Link to="/login" className="login-button">Login</Link>
-        <Link to="/register" className="register-button">Register</Link>
+
         <button onClick={toggleDarkMode} className="darkmode-toggle">🌙</button>
       </div>
     </nav>

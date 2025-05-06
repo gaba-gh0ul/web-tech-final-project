@@ -13,9 +13,9 @@ const Checkout = () => {
   const [orders, setOrders] = useState ('') ; 
 
   const handleAddUser = () => {
-    axios.post('http://localhost:5170/api', { name, email, number, cartItems })
+    axios.post('http://localhost:5170/api', { name, email, number, cartItems, total })
       .then(response => {
-        setOrders([...orders, response.data]);
+        setOrders('');
         setName('');
         setEmail('');
         setNumber('') ; 
