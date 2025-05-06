@@ -18,6 +18,8 @@ import "./App.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const App = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+
   return (
     <GoogleOAuthProvider clientId="334729623929-jr5gfge4rd0gpf3k5a4ekcd8g4mdn1jn.apps.googleusercontent.com">
       <CartProvider>
@@ -31,7 +33,12 @@ const App = () => {
               <Route path="/cart" element={<Cart />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/trackorder" element={<TrackOrder />} />
-              <Route path="/login" element={<LoginPage />} />
+              <Route
+                path="/login"
+                element={
+                  <LoginPage loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+                }
+              />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/admindashboard" element={<AdminDashboard />} />
             </Routes>
