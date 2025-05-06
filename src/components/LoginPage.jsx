@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "../styles/LoginPage.css";
+// src/components/LoginPage.jsx
+import React, { useState } from 'react';
+import { GoogleLogin } from '@react-oauth/google';
+//import '../styles/LoginPage.css'; // optional: create this for styling
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -32,7 +33,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="login-container">
+    /*<div className="login-container">
       <h2>Login</h2>
 
       {!isResetting ? (
@@ -45,52 +46,18 @@ const LoginPage = () => {
             required
           />
 
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-
-          <button type="submit">Login</button>
-          <p>
-            Forgot password?{" "}
-            <span className="link-like" onClick={() => setIsResetting(true)}>
-              Click here
-            </span>
-          </p>
-          <p>
-            Don't have an account? <Link to="/register">Register</Link>
-          </p>
-        </form>
-      ) : (
-        <div className="reset-section">
-          <input
-            type="tel"
-            placeholder="Enter your phone number"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            required
-          />
-          <button onClick={handleSendCode}>Send Reset Code via SMS</button>
-
-          <input
-            type="text"
-            placeholder="Enter received code"
-            value={resetCode}
-            onChange={(e) => setResetCode(e.target.value)}
-          />
-          <button onClick={handleVerifyCode}>Verify Code</button>
-
-          <p>
-            <span className="link-like" onClick={() => setIsResetting(false)}>
-              Back to login
-            </span>
-          </p>
-        </div>
-      )}
-    </div>
+        <button type="submit">Login</button>
+      </form>
+      <p>Don't have an account? <a href="#">Register</a></p>
+    </div>*/
+    <GoogleLogin
+      onSuccess={credentialResponse => {
+        console.log(credentialResponse);
+      }}
+      onError={() => {
+        console.log('Login Failed');
+      }}
+    />
   );
 };
 
