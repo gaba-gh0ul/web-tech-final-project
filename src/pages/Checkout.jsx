@@ -1,113 +1,77 @@
 // src/pages/Checkout.jsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
 import { useCart } from "../context/CartContext";
-import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 import "../styles/Checkout.css";
 
 const Checkout = () => {
-  const { cartItems, removeFromCart, clearCart } = useCart();
-  const [orderPlaced, setOrderPlaced] = useState(false);
-  const [trackingNumber, setTrackingNumber] = useState("");
-  const [editingIndex, setEditingIndex] = useState(null);
-  const [customText, setCustomText] = useState("");
-  const [sauceText, setSauceText] = useState("");
-  const navigate = useNavigate();
-
-  const handlePlaceOrder = () => {
-    const randomTracking = "GRK" + Math.floor(100000 + Math.random() * 900000);
-    setTrackingNumber(randomTracking);
-    setOrderPlaced(true);
-    clearCart();
-  };
-
-  const handleEdit = (index, currentCustom, currentSauce) => {
-    setEditingIndex(index);
-    setCustomText(currentCustom || "");
-    setSauceText(currentSauce || "");
-  };
-
-  const handleSaveEdit = (index) => {
-    cartItems[index].custom = customText;
-    cartItems[index].sauce = sauceText;
-    setEditingIndex(null);
-  };
-
+  const { cartItems, removeFromCart } = useCart();
   const total = cartItems.reduce((sum, item) => sum + item.price, 0);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [number, setNumber] = useState('');
+  const [orders, setOrders] = useState ('') ; 
+
+  const handleAddUser = () => {
+    axios.post('http://localhost:5170/api', { name, email, number, cartItems, total})
+      .then(response => {
+        console.log(response) ; 
+        alert("Your order number is "+ response.data.id)
+        setOrders('');
+        setName('');
+        setEmail('');
+        setNumber('') ; 
+      })
+      .catch(error => {
+        console.error('There was an error adding the user!', error);
+      });
+  };
 
   return (
     <div className="checkout-container">
       <h2>Checkout</h2>
-
-      {!orderPlaced && cartItems.length === 0 && <p>Your cart is empty.</p>}
-
-      {!orderPlaced &&
+      {cartItems.length === 0 ? (
+        <p>Your cart is empty.</p>
+      ) : (
         cartItems.map((item, index) => (
           <div key={index} className="checkout-item">
             <p>
               <strong>{item.name}</strong> - ${item.price.toFixed(2)}
             </p>
-
-            {/* Editing mode */}
-            {editingIndex === index ? (
-              <div>
-                <label>Customization:</label>
-                <input
-                  type="text"
-                  value={customText}
-                  onChange={(e) => setCustomText(e.target.value)}
-                  className="customization-input"
-                />
-
-                {/* Sauce dropdown (optional) */}
-                <label style={{ marginTop: "8px" }}>Sauce (for wings):</label>
-                <select
-                  value={sauceText}
-                  onChange={(e) => setSauceText(e.target.value)}
-                  className="customization-input"
-                >
-                  <option value="">Select Sauce</option>
-                  <option value="Mango Habanero">Mango Habanero</option>
-                  <option value="Barbecue">Barbecue</option>
-                  <option value="Buffalo">Buffalo</option>
-                  <option value="Garlic">Garlic</option>
-                  <option value="Plain">Plain</option>
-                </select>
-
-                <button className="small-btn" onClick={() => handleSaveEdit(index)}>Save</button>
-              </div>
-            ) : (
-              <>
-                {item.custom && <p>Customization: {item.custom}</p>}
-                {item.sauce && <p>Sauce: {item.sauce}</p>}
-              </>
-            )}
-
-            <div className="item-actions">
-              <button className="small-btn" onClick={() => removeFromCart(index)}>Remove</button>
-              {editingIndex !== index && (
-                <button className="small-btn" onClick={() => handleEdit(index, item.custom, item.sauce)}>Edit</button>
-              )}
-            </div>
+            {item.custom && <p>Custom: {item.custom}</p>}
+            <button className="checkout-button" onClick={() => removeFromCart(index)}>Remove</button>
           </div>
-        ))}
-
-      {/* Total and Place Order */}
-      {!orderPlaced && cartItems.length > 0 && (
+        ))
+      )}
+      {cartItems.length > 0 && (
         <>
           <h3>Total: ${total.toFixed(2)}</h3>
-          <button className="checkout-button" onClick={handlePlaceOrder}>Place Order</button>
+      <h2>Add New User</h2>
+      <div className="Orderer_info">
+      <input
+        type="text"
+        placeholder="Name"
+        value={name}
+        onChange={e => setName(e.target.value)}
+      />
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={e => setEmail(e.target.value)}
+      />
+      <input
+        type="phonenumber"
+        placeholder="Phone"
+        value={number}
+        onChange={e => setNumber(e.target.value)}
+      />
+      <br/>
+      <br/>
+    
+      <button className="checkout-button" onClick={handleAddUser}>Submit Order</button>
+      </div>
         </>
-      )}
-
-      {/* Confirmation */}
-      {orderPlaced && (
-        <div className="confirmation">
-          <h3>Thank you! Your order has been placed.</h3>
-          <p>Tracking Number: <strong>{trackingNumber}</strong></p>
-          <button className="track-button" onClick={() => navigate("/trackorder", { state: { trackingNumber } })}>
-            Track Your Order
-          </button>
-        </div>
       )}
     </div>
   );

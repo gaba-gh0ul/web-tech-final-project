@@ -1,19 +1,23 @@
 // src/pages/TrackOrder.jsx
 import React, { useState } from "react";
+import axios from 'axios';
 import "../styles/TrackOrder.css";
 
 const TrackOrder = () => {
-  const [trackingCode, setTrackingCode] = useState("");
+  const [ordernumber, setOrdernumber] = useState("");
   const [status, setStatus] = useState(null);
 
-  const handleTrack = () => {
-    if (trackingCode.startsWith("GRK")) {
-      setStatus("cooking");
-      setTimeout(() => setStatus("ready"), 4000); // Simulate progress
-    } else {
-      alert("Invalid tracking number.");
-    }
-  };
+
+    const handleTrack = (e) => {
+      e.preventDefault();
+      axios.post('http://localhost:5170/api/check',{ ordernumber })
+        .then(response => {
+          alert('Order Is Ready') ; 
+        })
+        .catch(error => {
+          alert('Preparing Order');
+        });
+    };
 
   return (
     <div className="track-order-container">
@@ -21,8 +25,8 @@ const TrackOrder = () => {
       <input
         type="text"
         placeholder="Enter Tracking Number"
-        value={trackingCode}
-        onChange={(e) => setTrackingCode(e.target.value)}
+        value={ordernumber}
+        onChange={(e) => setOrdernumber(e.target.value)}
         className="tracking-input"
       />
       <button onClick={handleTrack} className="track-button">Track</button>

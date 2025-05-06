@@ -8,6 +8,7 @@ import Order from "./pages/Order";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import TrackOrder from "./pages/TrackOrder";
+import Menuadd from "./pages/Menuadd";
 import LoginPage from "./components/LoginPage";
 import RegisterPage from "./components/RegisterPage";
 import AdminDashboard from "./pages/AdminDashboard";
@@ -31,6 +32,8 @@ const App = () => {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/admindashboard" element={<AdminDashboard />} />
+              <Route path="/addtomenu" element={<Menuadd />} />
+
             </Routes>
           </main>
         </Router>

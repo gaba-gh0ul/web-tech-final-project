@@ -61,3 +61,7 @@
 .login-redirect a:hover {
   text-decoration: underline;
 }
+
+.categories{
+  font-size: 12px;
+}

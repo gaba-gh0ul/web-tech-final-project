@@ -13,7 +13,6 @@ const Navbar = () => {
       <div className="hamburger" onClick={toggleMenu}>
         ☰
       </div>
-
       <div className={`nav-links ${isOpen ? "open" : ""}`}>
         <Link to="/" className="nav-button">
           Home
@@ -24,12 +23,6 @@ const Navbar = () => {
         <Link to="/order" className="nav-button">
           Order
         </Link>
-        <Link to="/login" className="login-button">
-          Login
-        </Link>
-        <Link to="/register" className="register-button">
-          Register
-        </Link>
         <Link to="/cart" className="nav-button">
           Cart
         </Link>
@@ -39,7 +32,7 @@ const Navbar = () => {
         <Link to="/trackorder" className="nav-button">
           Track Order
         </Link>
-        <Link to="/admindashboard" className="nav-button">
+        <Link to="/login" className="nav-button">
           Admin Dashboard
         </Link>
       </div>

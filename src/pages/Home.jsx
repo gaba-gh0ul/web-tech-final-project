@@ -26,8 +26,7 @@ const Home = () => {
       <div className="home-buttons">
         <Link to="/menu" className="home-button">View Menu</Link>
         <Link to="/order" className="home-button">Order Now</Link>
-        <Link to="/login" className="home-button">Login</Link>
-        <Link to="/register" className="home-button">Register</Link>
+
       </div>
     </div>
   );
