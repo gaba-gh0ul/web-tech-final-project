@@ -73,7 +73,12 @@ const Checkout = () => {
                   <option value="Plain">Plain</option>
                 </select>
 
-                <button className="small-btn" onClick={() => handleSaveEdit(index)}>Save</button>
+                <button
+                  className="small-btn"
+                  onClick={() => handleSaveEdit(index)}
+                >
+                  Save
+                </button>
               </div>
             ) : (
               <>
@@ -83,9 +88,19 @@ const Checkout = () => {
             )}
 
             <div className="item-actions">
-              <button className="small-btn" onClick={() => removeFromCart(index)}>Remove</button>
+              <button
+                className="small-btn"
+                onClick={() => removeFromCart(index)}
+              >
+                Remove
+              </button>
               {editingIndex !== index && (
-                <button className="small-btn" onClick={() => handleEdit(index, item.custom, item.sauce)}>Edit</button>
+                <button
+                  className="small-btn"
+                  onClick={() => handleEdit(index, item.custom, item.sauce)}
+                >
+                  Edit
+                </button>
               )}
             </div>
           </div>
@@ -95,7 +110,9 @@ const Checkout = () => {
       {!orderPlaced && cartItems.length > 0 && (
         <>
           <h3>Total: ${total.toFixed(2)}</h3>
-          <button className="checkout-button" onClick={handlePlaceOrder}>Place Order</button>
+          <button className="checkout-button" onClick={handlePlaceOrder}>
+            Pay in store
+          </button>
         </>
       )}
 
@@ -103,8 +120,15 @@ const Checkout = () => {
       {orderPlaced && (
         <div className="confirmation">
           <h3>Thank you! Your order has been placed.</h3>
-          <p>Tracking Number: <strong>{trackingNumber}</strong></p>
-          <button className="track-button" onClick={() => navigate("/trackorder", { state: { trackingNumber } })}>
+          <p>
+            Tracking Number: <strong>{trackingNumber}</strong>
+          </p>
+          <button
+            className="track-button"
+            onClick={() =>
+              navigate("/trackorder", { state: { trackingNumber } })
+            }
+          >
             Track Your Order
           </button>
         </div>
